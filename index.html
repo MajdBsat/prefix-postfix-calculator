@@ -9,8 +9,26 @@
 <body>
     <h2>Prefix/Postfix Calculator</h2>
     <div class="calculator-container">
+        <div class="container">
         <div class="introduction">
-            <h3>Hello User</h3>
+            <p class="intro">Hello User &#128075; <br><br>
+                Prefix is a mathematical notation in which operands <br> follow their operators <br>
+                if you want any help try using these examples: <br><br>
+                Prefix Evaluation: <br>
+                Expression: + 9 * 2 3 <br>
+                Steps: <br>
+                1. Start from the rightmost operand: 9 and * 2 3. <br>
+                2. Evaluate * 2 3 → 2 * 3 = 6. <br>
+                3. Add 9 + 6 = 15. <br>
+                Result: 15 <br>
+            </p>
+        </div>
+        <div class="split">
+            <p class="PS">PS: Don't forget to use space between the <br> operator
+                and the numbers <br>
+                you can also use your keyboard
+            </p>
+        </div>
         </div>
     <div class="calculator">
         <input type="text" class="display" id="display">
@@ -31,7 +49,26 @@
             <button id="button0">0</button>
             <button class="equals" id="buttonEquals">=</button>
             <button class="operator" id="buttonAdd">+</button>
+            <button class="space" id="buttonSpace">Space</button>
         </div>
+    </div>
+    <div class="container">
+    <div class="introduction2">
+        <p> Postfix is a mathematical notation in which operators <br> follow their operands <br>
+            Postfix Evaluation: <br>
+            Expression: 9 2 3 * + <br>
+            Steps: <br>
+            1. Start with the first operator *: 2 * 3 = 6. <br>
+            2. Add 9 + 6 = 15. <br>
+            Result: 15 <br>
+        </p>
+    </div>
+    <div class="split2">
+        <p class="dark">If you like the dark &#127761; 
+            press this button
+        </p>
+        <button class="darkness" id="darkModeToggle">Let There Be Darkness</button>
+    </div>
     </div>
     </div>
     <script src="./scripts/script.js"></script>

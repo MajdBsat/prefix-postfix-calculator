@@ -5,16 +5,56 @@
 }
 
 h2 {
-    margin-bottom: 120px;
+    margin-bottom: 50px;
     font-size: 40px;
     font-family: 'Times New Roman', Times, serif;
-    color: rgb(74, 74, 241);
+    color: rgb(247, 247, 250);
     text-shadow: 2px 2px black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 4px 10px rgba(7, 6, 6, 0.2);
+    background-color: rgb(198, 137, 233);
 }
 
-h3 {
+.intro {
     margin: 0;
-    font-size: 24px;
+    font-size: 16px;
+}
+
+.ps {
+    margin: 0;
+    font-size: 16px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.split {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    background: #fd0000;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 4px 10px rgba(7, 6, 6, 0.2);
+}
+
+.split2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 60px;
+    background: #fd0000;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 4px 10px rgba(7, 6, 6, 0.2);
 }
 
 body {
@@ -30,6 +70,11 @@ body {
     box-sizing: border-box;
 }
 
+body.dark-mode {
+    background: #121212;
+    color: #fff;
+}
+
 .calculator {
     background: #fff;
     border-radius: 10px;
@@ -39,16 +84,38 @@ body {
     max-width: 400px;
 }
 
+body.dark-mode .calculator {
+    background: #333;
+}
+
 .calculator-container {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     align-items: flex-start;
+    width: 100%;
+    height: 100%;
 }
 
 .introduction {
-    background: #007BFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 60px;
+    background: #19ce82;
     color: white;
-    padding: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 4px 10px rgba(7, 6, 6, 0.2);
+}
+
+.introduction2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 60px;
+    background: #3cbe00;
+    color: white;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 4px 10px rgba(7, 6, 6, 0.2);
 }
@@ -77,10 +144,23 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background: #007BFF;
+    background: #0278f7;
     color: white;
     margin: 1%;
     box-sizing: border-box;
+}
+
+body.dark-mode button {
+    background: #ffffff;
+    color: #000000;
+}
+
+body.dark-mode button:active {
+    background: #555;
+}
+
+.darkness {
+    background-color: rgb(27, 22, 22);
 }
 
 button:active {
@@ -101,4 +181,13 @@ button:active {
 
 .equals:active {
     background: #e0a800;
+}
+
+.space {
+    background-color: rgb(145, 17, 123);
+    grid-column: span 4;
+}
+
+.space:active {
+    background-color: rgb(65, 8, 55);
 }

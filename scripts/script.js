@@ -1,4 +1,5 @@
 const display = document.getElementById('display');
+const darkModeButton = document.getElementById('darkModeToggle');
 
 let result;
 
@@ -102,6 +103,15 @@ function clearDisplay() {
     display.value = '';
 }
 
+darkModeButton.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains('dark-mode')) {
+      darkModeButton.textContent = 'Let There Be Light';
+    } else {
+      darkModeButton.textContent = 'Let There Be Darkness';
+    }
+});
+
 document.getElementById('button1').addEventListener('click', () => appendToDisplay('1'));
 document.getElementById('button2').addEventListener('click', () => appendToDisplay('2'));
 document.getElementById('button3').addEventListener('click', () => appendToDisplay('3'));
@@ -116,5 +126,6 @@ document.getElementById('buttonAdd').addEventListener('click', () => appendToDis
 document.getElementById('buttonSub').addEventListener('click', () => appendToDisplay('-'));
 document.getElementById('buttonMul').addEventListener('click', () => appendToDisplay('*'));
 document.getElementById('buttonDiv').addEventListener('click', () => appendToDisplay('/'));
+document.getElementById('buttonSpace').addEventListener('click', () => appendToDisplay(' '));
 document.getElementById('buttonClear').addEventListener('click', clearDisplay);
 document.getElementById('buttonEquals').addEventListener('click', evaluateExpression);
