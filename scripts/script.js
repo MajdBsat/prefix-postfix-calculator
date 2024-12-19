@@ -31,10 +31,8 @@ function evaluateExpression(){
 }
 
 function evaluatePrefix(expression) {
-    console.log('Evaluating Prefix:', expression);
     const stack = [];
     expression.reverse().forEach((op) => {
-        console.log(`Processing token: ${op}`);
         if (!isNaN(op)) {
             stack.push(Number(op));
         } 
@@ -65,11 +63,8 @@ function evaluatePrefix(expression) {
 }
 
 function evaluatePostfix(expression) {
-    console.log('Evaluating Postfix:', expression);
     const stack = [];
-
     expression.forEach((op) => {
-        console.log(`Processing token: ${op}`);
     if (!isNaN(op)) {
         stack.push(Number(op));
     } 
