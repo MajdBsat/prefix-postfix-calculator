@@ -1,4 +1,5 @@
 const display = document.getElementById('display');
+
 let result;
 
 function isOperator(Op) {
@@ -11,41 +12,54 @@ function appendToDisplay(value) {
 
 function evaluateExpression(){
     const expression = display.value.trim();
+    const temp = expression.split('');
     if (!expression) 
         return;
-    try{
-        result = evaluatePrefix(expression);
-        display.value = result;
-    }
-    catch (error){
-        display.value = 'Wrong Expression Sequence';
+    if (isOperator(temp[0]))
+        {
+            try{
+                result = evaluatePrefix(expression);
+                display.value = result;
+            }
+            catch (error){
+                display.value = 'Wrong Expression Sequence!!!';
+            }
+        }
+    else if (!isOperator(temp[0])){
+        try{
+            result = evaluatePostfix(expression);
+            display.value = result;
+        }
+        catch (error) {
+            display.value = "Wrong Expression Sequence!";
+        }
     }
 }
 
 function evaluatePrefix(expression) {
-    const Ops = expression.split('').reverse(); 
+    const exp = expression.split('').reverse();
     const stack = [];
 
-    Ops.forEach((Op) => {
-        if (!isNaN(Op)) {
-            stack.push(Number(Op));
+    exp.forEach((op) => {
+        if (!isNaN(op)) {
+            stack.push(Number(op));
         } 
-        else if (isOperator(Op)) {
+        else if (isOperator(op)) {
             const operand1 = stack.pop();
             const operand2 = stack.pop();
             if (operand1 === undefined || operand2 === undefined) {
                 throw new Error('Invalid prefix expression');
             }
-            if (Op === '+') {
+            if (op === '+') {
                 stack.push(operand1 + operand2);
             } 
-            else if (Op === '-') {
+            else if (op === '-') {
                 stack.push(operand1 - operand2);
             } 
-            else if (Op === '*') {
+            else if (op === '*') {
                 stack.push(operand1 * operand2);
             } 
-                else if (Op === '/') {
+                else if (op === '/') {
                 stack.push(operand1 / operand2);
             }
         }
@@ -54,6 +68,42 @@ function evaluatePrefix(expression) {
     if (stack.length !== 1) {
       throw new Error('Invalid prefix expression');
     }
+    return stack.pop();
+}
+
+function evaluatePostfix(expression) {
+    const exp = expression.split('');
+    const stack = [];
+
+    exp.forEach((op) => {
+    if (!isNaN(op)) {
+        stack.push(Number(op));
+    } 
+    else if (isOperator(op)) {
+        const operand2 = stack.pop();
+        const operand1 = stack.pop();
+        if (operand1 === undefined || operand2 === undefined) {
+          throw new Error('Invalid postfix expression');
+        }
+        if (op === '+') {
+            stack.push(operand1 + operand2);
+        } 
+        else if (op === '-') {
+            stack.push(operand1 - operand2);
+        } 
+        else if (op === '*') {
+            stack.push(operand1 * operand2);
+        } 
+            else if (op === '/') {
+            stack.push(operand1 / operand2);
+        }
+    }
+});
+
+    if (stack.length !== 1) {
+      throw new Error('Invalid postfix expression');
+    }
+
     return stack.pop();
 }
 
