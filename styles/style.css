@@ -16,12 +16,7 @@ h2 {
     background-color: rgb(198, 137, 233);
 }
 
-.intro {
-    margin: 0;
-    font-size: 16px;
-}
-
-.ps {
+.intro, .ps {
     margin: 0;
     font-size: 16px;
 }
@@ -200,4 +195,116 @@ body.dark-mode button:active {
 
 .darkness {
     background-color: rgb(27, 22, 22);
+}
+
+@media (max-width: 1024px) {
+    .calculator-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .introduction, .introduction2 {
+        margin-left: 0;
+        margin-right: 0;
+        width: 90%;
+    }
+
+    .split, .split2 {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .calculator {
+        max-width: 90%;
+    }
+
+    h2 {
+        font-size: 30px;
+        padding: 20px;
+    }
+
+    .display {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 25px;
+        padding: 15px;
+    }
+
+    .calculator-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .buttons {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    button {
+        font-size: 14px;
+        height: 45px;
+    }
+
+    .display {
+        font-size: 18px;
+        height: 40px;
+    }
+
+    .introduction, .introduction2 {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .split, .split2 {
+        flex-direction: column;
+        margin-top: 10px;
+        padding: 20px;
+    }
+
+    .space {
+        grid-column: span 4;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .calculator {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    button {
+        font-size: 12px;
+        height: 40px;
+    }
+
+    .display {
+        font-size: 16px;
+        height: 35px;
+    }
+
+    .introduction, .introduction2 {
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .split, .split2 {
+        flex-direction: column;
+        margin-top: 10px;
+        padding: 15px;
+    }
 }
