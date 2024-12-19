@@ -2,14 +2,14 @@ const display = document.getElementById('display');
 
 function appendToDisplay(value) {
     display.value += value;
-  }
+}
 
 function evaluateExpression(){
 
 }
 
-function clearDisplay(){
-
+function clearDisplay() {
+    display.value = '';
 }
 
 document.getElementById('button1').addEventListener('click', () => appendToDisplay('1'));
