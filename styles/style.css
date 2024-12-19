@@ -12,6 +12,11 @@ h2 {
     text-shadow: 2px 2px black;
 }
 
+h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -32,6 +37,20 @@ body {
     padding: 20px;
     width: 100%;
     max-width: 400px;
+}
+
+.calculator-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.introduction {
+    background: #007BFF;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 10px rgba(7, 6, 6, 0.2);
 }
 
 .display {

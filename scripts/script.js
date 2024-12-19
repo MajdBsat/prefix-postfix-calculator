@@ -11,36 +11,29 @@ function appendToDisplay(value) {
 }
 
 function evaluateExpression(){
-    const expression = display.value.trim();
-    const temp = expression.split('');
-    if (!expression) 
+    const expression = String(display.value).trim();
+    const temp = expression.split(/\s+/);
+    if (!expression) {
+        display.value = 'Error: Empty expression!';
         return;
-    if (isOperator(temp[0]))
-        {
-            try{
-                result = evaluatePrefix(expression);
-                display.value = result;
-            }
-            catch (error){
-                display.value = 'Wrong Expression Sequence!!!';
-            }
+    }
+    try {
+        if (isOperator(temp[0])) {
+            result = evaluatePrefix(temp);
+        } else {
+            result = evaluatePostfix(temp);
         }
-    else if (!isOperator(temp[0])){
-        try{
-            result = evaluatePostfix(expression);
-            display.value = result;
-        }
-        catch (error) {
-            display.value = "Wrong Expression Sequence!";
-        }
+        display.value = result;
+    } catch (error) {
+        display.value = `Error: ${error.message}`;
     }
 }
 
 function evaluatePrefix(expression) {
-    const exp = expression.split('').reverse();
+    console.log('Evaluating Prefix:', expression);
     const stack = [];
-
-    exp.forEach((op) => {
+    expression.reverse().forEach((op) => {
+        console.log(`Processing token: ${op}`);
         if (!isNaN(op)) {
             stack.push(Number(op));
         } 
@@ -64,7 +57,6 @@ function evaluatePrefix(expression) {
             }
         }
     });
-
     if (stack.length !== 1) {
       throw new Error('Invalid prefix expression');
     }
@@ -72,10 +64,11 @@ function evaluatePrefix(expression) {
 }
 
 function evaluatePostfix(expression) {
-    const exp = expression.split('');
+    console.log('Evaluating Postfix:', expression);
     const stack = [];
 
-    exp.forEach((op) => {
+    expression.forEach((op) => {
+        console.log(`Processing token: ${op}`);
     if (!isNaN(op)) {
         stack.push(Number(op));
     } 
@@ -99,11 +92,9 @@ function evaluatePostfix(expression) {
         }
     }
 });
-
     if (stack.length !== 1) {
       throw new Error('Invalid postfix expression');
     }
-
     return stack.pop();
 }
 
