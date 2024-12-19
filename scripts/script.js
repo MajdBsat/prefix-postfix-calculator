@@ -1,11 +1,60 @@
 const display = document.getElementById('display');
+let result;
+
+function isOperator(Op) {
+    return ['+', '-', '*', '/'].includes(Op);
+}
 
 function appendToDisplay(value) {
     display.value += value;
 }
 
 function evaluateExpression(){
+    const expression = display.value.trim();
+    if (!expression) 
+        return;
+    try{
+        result = evaluatePrefix(expression);
+        display.value = result;
+    }
+    catch (error){
+        display.value = 'Wrong Expression Sequence';
+    }
+}
 
+function evaluatePrefix(expression) {
+    const Ops = expression.split('').reverse(); 
+    const stack = [];
+
+    Ops.forEach((Op) => {
+        if (!isNaN(Op)) {
+            stack.push(Number(Op));
+        } 
+        else if (isOperator(Op)) {
+            const operand1 = stack.pop();
+            const operand2 = stack.pop();
+            if (operand1 === undefined || operand2 === undefined) {
+                throw new Error('Invalid prefix expression');
+            }
+            if (Op === '+') {
+                stack.push(operand1 + operand2);
+            } 
+            else if (Op === '-') {
+                stack.push(operand1 - operand2);
+            } 
+            else if (Op === '*') {
+                stack.push(operand1 * operand2);
+            } 
+                else if (Op === '/') {
+                stack.push(operand1 / operand2);
+            }
+        }
+    });
+
+    if (stack.length !== 1) {
+      throw new Error('Invalid prefix expression');
+    }
+    return stack.pop();
 }
 
 function clearDisplay() {
